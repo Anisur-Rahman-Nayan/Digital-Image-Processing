@@ -1,20 +1,19 @@
 import cv2 as cv
 import numpy as np
 
+img = cv.imread('Resources/Photos/park.jpg')
+cv.imshow('Boston', img)
 
-image = cv.imread("Resources/Photos/park.jpg")
+def translate(img, x,y):
+    width = img.shape[1]
+    height = img.shape[0]
+    transMatrix = np.float32([[1,0,x],[0,1,y]])
+    dim = (width,height)
+    return cv.warpAffine(img,transMatrix,dim)
 
-height, width = image.shape[:2]
 
-quarter_height, quarter_width = height/4, width/4
+translated = translate(img,100,100)
+cv.imshow('translated', translated)
 
-T = np.float32([[1,0,quarter_width],[0,1,quarter_height]])
 
-img_translation = cv.warpAffine(image, T, (width,height))
-
-cv.imshow("Original Image", image)
-cv.imshow("Translation", img_translation)
-
-cv.waitKey()
-
-cv.destroyAllWindows()
+cv.waitKey(0)
