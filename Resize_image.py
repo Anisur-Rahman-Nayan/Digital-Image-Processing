@@ -21,6 +21,7 @@ cv.imshow('Resized Down by defining height and width', resized_down)
 cv.waitKey()
 cv.imshow('Resized Up image by defining height and width', resized_up)
 cv.waitKey()
+
 # press any key to close the windows
 cv.destroyAllWindows()
 
